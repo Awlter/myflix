@@ -1,6 +1,6 @@
 jQuery(function($) {
   $('#payment-form').submit(function(event) {
-    event.preventDefault();
+    return false;
     var $form = $(this);
     $form.find("button").prop('disabled', true);
     Stripe.createToken($form, stripeResponseHandler);
