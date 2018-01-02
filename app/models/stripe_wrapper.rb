@@ -10,7 +10,7 @@ module StripeWrapper
       response = Stripe::Charge.create(
         amount: options[:amount],
         currency: 'usd',
-        card: options[:card]
+        source: options[:card]
       )
       new(response, :success)
     rescue Stripe::CardError => e

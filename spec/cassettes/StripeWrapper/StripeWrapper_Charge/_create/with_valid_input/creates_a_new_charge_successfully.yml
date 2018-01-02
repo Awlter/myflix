@@ -15,8 +15,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       X-Stripe-Client-User-Agent:
       - '{"bindings_version":"3.8.0","lang":"ruby","lang_version":"2.1.2 p95 (2014-05-08)","platform":"x86_64-darwin13.0","engine":"ruby","publisher":"stripe","uname":"Darwin
-        Awlter.local 17.3.0 Darwin Kernel Version 17.3.0: Thu Nov  9 18:09:22 PST
-        2017; root:xnu-4570.31.3~1/RELEASE_X86_64 x86_64","hostname":"Awlter.local"}'
+        Awlter 17.3.0 Darwin Kernel Version 17.3.0: Thu Nov  9 18:09:22 PST 2017;
+        root:xnu-4570.31.3~1/RELEASE_X86_64 x86_64","hostname":"Awlter"}'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 01 Jan 2018 16:42:42 GMT
+      - Mon, 01 Jan 2018 23:51:12 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_oNFGSIueueKOiO
+      - req_y6HMmajuBJYu4h
       Stripe-Version:
       - '2017-08-15'
       Strict-Transport-Security:
@@ -58,10 +58,10 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_1BfWN4FbDoFsZOtGUJ5lp7ca",
+          "id": "tok_1Bfd3kFbDoFsZOtGnhs6Aldi",
           "object": "token",
           "card": {
-            "id": "card_1BfWN4FbDoFsZOtGz3h8cGQo",
+            "id": "card_1Bfd3kFbDoFsZOtGxqe8LAwl",
             "object": "card",
             "address_city": null,
             "address_country": null,
@@ -84,20 +84,20 @@ http_interactions:
             "name": null,
             "tokenization_method": null
           },
-          "client_ip": "124.225.31.26",
-          "created": 1514824962,
+          "client_ip": "121.58.36.178",
+          "created": 1514850672,
           "livemode": false,
           "type": "card",
           "used": false
         }
     http_version: 
-  recorded_at: Mon, 01 Jan 2018 16:42:42 GMT
+  recorded_at: Mon, 01 Jan 2018 23:51:12 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/charges
     body:
       encoding: US-ASCII
-      string: amount=999&currency=usd&card=tok_1BfWN4FbDoFsZOtGUJ5lp7ca
+      string: amount=999&currency=usd&card=tok_1Bfd3kFbDoFsZOtGnhs6Aldi
     headers:
       User-Agent:
       - Stripe/v1 RubyBindings/3.8.0
@@ -107,8 +107,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       X-Stripe-Client-User-Agent:
       - '{"bindings_version":"3.8.0","lang":"ruby","lang_version":"2.1.2 p95 (2014-05-08)","platform":"x86_64-darwin13.0","engine":"ruby","publisher":"stripe","uname":"Darwin
-        Awlter.local 17.3.0 Darwin Kernel Version 17.3.0: Thu Nov  9 18:09:22 PST
-        2017; root:xnu-4570.31.3~1/RELEASE_X86_64 x86_64","hostname":"Awlter.local"}'
+        Awlter 17.3.0 Darwin Kernel Version 17.3.0: Thu Nov  9 18:09:22 PST 2017;
+        root:xnu-4570.31.3~1/RELEASE_X86_64 x86_64","hostname":"Awlter"}'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -121,7 +121,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 01 Jan 2018 16:42:44 GMT
+      - Mon, 01 Jan 2018 23:51:13 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -141,7 +141,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_jX9N94VjsRlbpG
+      - req_m5KVTV70v7I9gh
       Stripe-Version:
       - '2017-08-15'
       Strict-Transport-Security:
@@ -150,15 +150,15 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "ch_1BfWN6FbDoFsZOtGzBMoGJZ8",
+          "id": "ch_1Bfd3lFbDoFsZOtG2FsTTgcs",
           "object": "charge",
           "amount": 999,
           "amount_refunded": 0,
           "application": null,
           "application_fee": null,
-          "balance_transaction": "txn_1BfWN6FbDoFsZOtGBxIglUEW",
+          "balance_transaction": "txn_1Bfd3lFbDoFsZOtGOVLGMEjA",
           "captured": true,
-          "created": 1514824964,
+          "created": 1514850673,
           "currency": "usd",
           "customer": null,
           "description": null,
@@ -188,12 +188,12 @@ http_interactions:
             "data": [],
             "has_more": false,
             "total_count": 0,
-            "url": "/v1/charges/ch_1BfWN6FbDoFsZOtGzBMoGJZ8/refunds"
+            "url": "/v1/charges/ch_1Bfd3lFbDoFsZOtG2FsTTgcs/refunds"
           },
           "review": null,
           "shipping": null,
           "source": {
-            "id": "card_1BfWN4FbDoFsZOtGz3h8cGQo",
+            "id": "card_1Bfd3kFbDoFsZOtGxqe8LAwl",
             "object": "card",
             "address_city": null,
             "address_country": null,
@@ -223,5 +223,5 @@ http_interactions:
           "transfer_group": null
         }
     http_version: 
-  recorded_at: Mon, 01 Jan 2018 16:42:44 GMT
+  recorded_at: Mon, 01 Jan 2018 23:51:13 GMT
 recorded_with: VCR 3.0.3

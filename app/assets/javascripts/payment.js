@@ -1,9 +1,9 @@
 jQuery(function($) {
   $('#payment-form').submit(function(event) {
+    event.preventDefault();
     var $form = $(this);
     $form.find("button").prop('disabled', true);
     Stripe.createToken($form, stripeResponseHandler);
-    return false;
   });
 });
 
