@@ -24,19 +24,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    result = UserCreation.new(@user, params[:invitation_token]).create(params[:stripeToken])
 
-    if @user.valid?
-      charge = StripeWrapper::Charge.create(amount: 999, card: params[:stripeToken])
-
-      if charge.successful?
-        UserCreation.new(@user, params[:invitation_token]).act
-        redirect_to sign_in_path
-      else
-        flash.now[:error] = charge.error_message
-        render :new
-      end
+    if result.successful?
+      flash[:notice] = "Succeeded! Thanks for your registration."
+      redirect_to sign_in_path
     else
-      flash.now[:error] = "Invalid user information. Please check the errors below."
+      flash.now[:error] = result.error_message
       render :new
     end
   end

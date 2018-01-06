@@ -1,15 +1,34 @@
 class UserCreation
-  attr_reader :user, :invitation_token
+  attr_reader :user, :invitation_token, :error_message
 
   def initialize(user, invitation_token)
     @user = user
     @invitation_token = invitation_token
   end
 
-  def act
-    user.save
-    handle_invitation
-    MyMailer.delay.register_success_mail(user)
+  def create(stripe_token)
+    if user.valid?
+      charge = StripeWrapper::Charge.create(amount: 999, card: stripe_token)
+
+      if charge.successful?
+        user.save
+        handle_invitation
+        MyMailer.delay.register_success_mail(user)
+        @status = :success
+      else
+        @error_message = charge.error_message
+        @status = :error
+      end
+    else
+      @status = :error
+      @error_message = "The user information are not valid. Please check them below"
+    end
+
+    self
+  end
+
+  def successful?
+    @status == :success
   end
 
   private
