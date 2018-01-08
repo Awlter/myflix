@@ -21,7 +21,7 @@ class UserCreation
       end
     else
       @status = :error
-      @error_message = "The user information are not valid. Please check them below"
+      @error_message = "Invalid user information. Please check the errors below."
     end
 
     self

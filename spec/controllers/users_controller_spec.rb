@@ -43,51 +43,21 @@ describe UsersController, :type => :controller do
   end
 
   describe "POST create" do
-    context "with valid input" do
-      after do
-        ActionMailer::Base.deliveries.clear
-      end
-
-      before do
-        charge = double("charge", successful?: true)
-        allow(StripeWrapper::Charge).to receive('create').and_return(charge)
-      end
-
-      it "creates a new user" do
-        post :create, user: Fabricate.attributes_for(:user), stripeToken: '123123'
-        expect(User.count).to eq 1
-      end
-
+    context "successful user registration" do
       it "redirects to sign in path" do
+        result = double('result', successful?: true)
+        allow_any_instance_of(UserCreation).to receive('create').and_return(result)
         post :create, user: Fabricate.attributes_for(:user)
         expect(response).to redirect_to sign_in_path
       end
-
-      it "makes the inviter and the recipient follow each other" do
-        inviter = Fabricate(:user)
-        invitation = Fabricate(:invitation, inviter: inviter)
-        post :create, user: Fabricate.attributes_for(:user), invitation_token: invitation.token
-        expect(User.last.leaders).to eq [inviter]
-        expect(User.last.followers).to eq [inviter]
-      end
-
-      it "clear the invitation token upon acceptance" do
-        inviter = Fabricate(:user)
-        invitation = Fabricate(:invitation, inviter: inviter)
-        post :create, user: Fabricate.attributes_for(:user), invitation_token: invitation.token
-        expect(invitation.reload.token).to be_nil
-      end
     end
 
-    context "valid personal info and declined card" do
-      before do
-        charge = double("charge", successful?: false, error_message: 'declined card')
-        allow(StripeWrapper::Charge).to receive('create').and_return(charge)
-        post :create, user: Fabricate.attributes_for(:user), stripeToken: '123123'
-      end
+    context "failed user registration" do
+      let(:result) { double('result', successful?: false, error_message: 'some error message') }
 
-      it 'does not create a new user' do
-        expect(User.count).to eq 0
+      before do
+        allow_any_instance_of(UserCreation).to receive('create').and_return(result)
+        post :create, user: Fabricate.attributes_for(:user), stripeToken: '123123'
       end
 
       it 'renders :new template' do
@@ -96,55 +66,8 @@ describe UsersController, :type => :controller do
       it 'set the flash error message' do
         expect(flash[:error]).to be_present
       end
-    end
-
-    context "with invalid personal info" do
-      before do
-        post :create, user: { email: Faker::Internet.email }
-      end
-
-      it 'does not create a new user' do
-        expect(User.count).to eq 0
-      end
-      it 'renders :new template' do
-        expect(response).to render_template :new
-      end
       it 'sets new @user' do
         expect(assigns(:user)).to be_instance_of(User)
-      end
-      it 'does not charge card' do
-        expect(StripeWrapper::Charge).not_to receive(:create)
-      end
-    end
-
-    context "sending email" do
-      context "with valid input" do
-        after do
-          ActionMailer::Base.deliveries.clear
-        end
-
-        before do
-          charge = double("charge", successful?: true)
-          allow(StripeWrapper::Charge).to receive('create').and_return(charge)
-        end
-
-        it "sends email" do
-          user_attributes = Fabricate.attributes_for(:user)
-          post :create, user: user_attributes
-          expect(ActionMailer::Base.deliveries.last.to).to eq [user_attributes[:email]]
-          expect(ActionMailer::Base.deliveries.last.body).to include user_attributes[:full_name]
-        end
-      end
-
-      context "with invalid input" do
-        after do
-          ActionMailer::Base.deliveries.clear
-        end
-
-        it "does not send email" do
-          post :create, user: Fabricate.attributes_for(:user, full_name: nil)
-          expect(ActionMailer::Base.deliveries).to be_empty
-        end
       end
     end
   end
