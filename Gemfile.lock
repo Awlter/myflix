@@ -227,6 +227,9 @@ GEM
       sprockets (~> 2.8)
     stripe (3.8.0)
       faraday (~> 0.10)
+    stripe_event (2.0.0)
+      activesupport (>= 3.1)
+      stripe (>= 2.8, < 4.0)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -290,6 +293,7 @@ DEPENDENCIES
   shoulda-matchers (= 2.7.0)
   sidekiq (= 4.2)
   stripe
+  stripe_event
   thin
   uglifier
   unicorn

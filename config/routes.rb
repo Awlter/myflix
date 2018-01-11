@@ -1,6 +1,7 @@
 Myflix::Application.routes.draw do
   root to: 'pages#front'
-
+  mount StripeEvent::Engine, at: '/stripe_events'
+  
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'
   get '/sign_out', to: 'sessions#destroy'
@@ -26,7 +27,6 @@ Myflix::Application.routes.draw do
     collection do
       get '/search', to: 'videos#search'
     end
-
     resources :reviews, only: [:create]
   end
 
@@ -38,8 +38,6 @@ Myflix::Application.routes.draw do
   resources :password_resets, only: [:show, :create]
 
   resources :invitations, only: [:new, :create]
-
-  resources :charges, only: [:new, :create]
 
   get 'ui(/:action)', controller: 'ui'
 end

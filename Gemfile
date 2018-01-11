@@ -19,6 +19,7 @@ gem 'mini_magick'
 gem 'carrierwave-aws'
 gem 'stripe'
 gem 'draper', '~> 1.3'
+gem 'stripe_event'
 
 group :development do
   gem 'thin'
