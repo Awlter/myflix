@@ -8,15 +8,15 @@ class UserCreation
 
   def create(stripe_token)
     if user.valid?
-      charge = StripeWrapper::Charge.create(amount: 999, card: stripe_token)
+      customer = StripeWrapper::Customer.create(email: user.email, card: stripe_token)
 
-      if charge.successful?
+      if customer.successful?
         user.save
         handle_invitation
         MyMailer.delay.register_success_mail(user)
         @status = :success
       else
-        @error_message = charge.error_message
+        @error_message = customer.error_message
         @status = :error
       end
     else

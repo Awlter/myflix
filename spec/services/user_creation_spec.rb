@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe UserCreation do
   context "with valid user info and valid card" do
-    let(:charge) { double("charge", successful?: true) }
+    let(:customer) { double("customer", successful?: true) }
 
     before do
-      allow(StripeWrapper::Charge).to receive('create').and_return(charge)
+      allow(StripeWrapper::Customer).to receive('create').and_return(customer)
     end
 
     after do
@@ -35,8 +35,8 @@ describe UserCreation do
 
   context "valid personal info and declined card" do
     before do
-      charge = double("charge", successful?: false, error_message: 'declined card')
-      allow(StripeWrapper::Charge).to receive('create').and_return(charge)
+      customer = double("customer", successful?: false, error_message: 'declined card')
+      allow(StripeWrapper::Customer).to receive('create').and_return(customer)
     end
 
     it 'does not create a new user' do
@@ -55,7 +55,7 @@ describe UserCreation do
     end
 
     it 'does not charge card' do
-      expect(StripeWrapper::Charge).not_to receive(:create)
+      expect(StripeWrapper::Customer).not_to receive(:create)
     end
   end
 
@@ -66,8 +66,8 @@ describe UserCreation do
       end
 
       it "sends email" do
-        charge = double("charge", successful?: true)
-        allow(StripeWrapper::Charge).to receive('create').and_return(charge)
+        customer = double("customer", successful?: true)
+        allow(StripeWrapper::Customer).to receive('create').and_return(customer)
 
         user_attributes = Fabricate.attributes_for(:user)
         UserCreation.new(User.new(user_attributes), nil).create('123123')
