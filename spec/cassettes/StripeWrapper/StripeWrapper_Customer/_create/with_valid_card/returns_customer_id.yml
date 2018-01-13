@@ -1,0 +1,276 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/tokens
+    body:
+      encoding: US-ASCII
+      string: card[number]=4242424242424242&card[exp_month]=12&card[exp_year]=2018&card[cvc]=314
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/3.8.0
+      Authorization:
+      - Bearer sk_test_R7CsF65YXLyWRgQfDF7X0QBq
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"3.8.0","lang":"ruby","lang_version":"2.1.2 p95 (2014-05-08)","platform":"x86_64-darwin17.0","engine":"ruby","publisher":"stripe","uname":"Darwin
+        wangxuefeis-MacBook-Pro.local 17.3.0 Darwin Kernel Version 17.3.0: Thu Nov  9
+        18:09:22 PST 2017; root:xnu-4570.31.3~1/RELEASE_X86_64 x86_64","hostname":"wangxuefeis-MacBook-Pro.local"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 12 Jan 2018 13:20:23 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '783'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - X-Stripe-Privileged-Session-Required,stripe-manage-version,X-Stripe-External-Auth-Required
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_4eIlVYKFk4Lfn8
+      Stripe-Version:
+      - '2017-08-15'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "tok_1BjSSJFbDoFsZOtG9k16IODD",
+          "object": "token",
+          "card": {
+            "id": "card_1BjSSJFbDoFsZOtGLgimLhRD",
+            "object": "card",
+            "address_city": null,
+            "address_country": null,
+            "address_line1": null,
+            "address_line1_check": null,
+            "address_line2": null,
+            "address_state": null,
+            "address_zip": null,
+            "address_zip_check": null,
+            "brand": "Visa",
+            "country": "US",
+            "cvc_check": "unchecked",
+            "dynamic_last4": null,
+            "exp_month": 12,
+            "exp_year": 2018,
+            "fingerprint": "uY88PVF5bjhLynks",
+            "funding": "credit",
+            "last4": "4242",
+            "metadata": {},
+            "name": null,
+            "tokenization_method": null
+          },
+          "client_ip": "220.174.159.133",
+          "created": 1515763223,
+          "livemode": false,
+          "type": "card",
+          "used": false
+        }
+    http_version: 
+  recorded_at: Fri, 12 Jan 2018 13:20:24 GMT
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/customers
+    body:
+      encoding: US-ASCII
+      string: plan=base&email=vicky%40mayer.info&card=tok_1BjSSJFbDoFsZOtG9k16IODD
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/3.8.0
+      Authorization:
+      - Bearer sk_test_R7CsF65YXLyWRgQfDF7X0QBq
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"3.8.0","lang":"ruby","lang_version":"2.1.2 p95 (2014-05-08)","platform":"x86_64-darwin17.0","engine":"ruby","publisher":"stripe","uname":"Darwin
+        wangxuefeis-MacBook-Pro.local 17.3.0 Darwin Kernel Version 17.3.0: Thu Nov  9
+        18:09:22 PST 2017; root:xnu-4570.31.3~1/RELEASE_X86_64 x86_64","hostname":"wangxuefeis-MacBook-Pro.local"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 12 Jan 2018 13:20:26 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '3403'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - X-Stripe-Privileged-Session-Required,stripe-manage-version,X-Stripe-External-Auth-Required
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_Y8pvY7FOcjdvOp
+      Stripe-Version:
+      - '2017-08-15'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "cus_C7hshXM3Fgl2Vx",
+          "object": "customer",
+          "account_balance": 0,
+          "created": 1515763225,
+          "currency": "usd",
+          "default_source": "card_1BjSSJFbDoFsZOtGLgimLhRD",
+          "delinquent": false,
+          "description": null,
+          "discount": null,
+          "email": "vicky@mayer.info",
+          "livemode": false,
+          "metadata": {},
+          "shipping": null,
+          "sources": {
+            "object": "list",
+            "data": [
+              {
+                "id": "card_1BjSSJFbDoFsZOtGLgimLhRD",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_C7hshXM3Fgl2Vx",
+                "cvc_check": "pass",
+                "dynamic_last4": null,
+                "exp_month": 12,
+                "exp_year": 2018,
+                "fingerprint": "uY88PVF5bjhLynks",
+                "funding": "credit",
+                "last4": "4242",
+                "metadata": {},
+                "name": null,
+                "tokenization_method": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/customers/cus_C7hshXM3Fgl2Vx/sources"
+          },
+          "subscriptions": {
+            "object": "list",
+            "data": [
+              {
+                "id": "sub_C7hsV8GmJCaEGA",
+                "object": "subscription",
+                "application_fee_percent": null,
+                "billing": "charge_automatically",
+                "cancel_at_period_end": false,
+                "canceled_at": null,
+                "created": 1515763225,
+                "current_period_end": 1518441625,
+                "current_period_start": 1515763225,
+                "customer": "cus_C7hshXM3Fgl2Vx",
+                "days_until_due": null,
+                "discount": null,
+                "ended_at": null,
+                "items": {
+                  "object": "list",
+                  "data": [
+                    {
+                      "id": "si_C7hsdCRNja2wHk",
+                      "object": "subscription_item",
+                      "created": 1515763226,
+                      "metadata": {},
+                      "plan": {
+                        "id": "base",
+                        "object": "plan",
+                        "amount": 999,
+                        "created": 1515483668,
+                        "currency": "usd",
+                        "interval": "month",
+                        "interval_count": 1,
+                        "livemode": false,
+                        "metadata": {},
+                        "name": "the base plan",
+                        "statement_descriptor": null,
+                        "trial_period_days": null
+                      },
+                      "quantity": 1
+                    }
+                  ],
+                  "has_more": false,
+                  "total_count": 1,
+                  "url": "/v1/subscription_items?subscription=sub_C7hsV8GmJCaEGA"
+                },
+                "livemode": false,
+                "metadata": {},
+                "plan": {
+                  "id": "base",
+                  "object": "plan",
+                  "amount": 999,
+                  "created": 1515483668,
+                  "currency": "usd",
+                  "interval": "month",
+                  "interval_count": 1,
+                  "livemode": false,
+                  "metadata": {},
+                  "name": "the base plan",
+                  "statement_descriptor": null,
+                  "trial_period_days": null
+                },
+                "quantity": 1,
+                "start": 1515763225,
+                "status": "active",
+                "tax_percent": null,
+                "trial_end": null,
+                "trial_start": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/customers/cus_C7hshXM3Fgl2Vx/subscriptions"
+          }
+        }
+    http_version: 
+  recorded_at: Fri, 12 Jan 2018 13:20:27 GMT
+recorded_with: VCR 3.0.3

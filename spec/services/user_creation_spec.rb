@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UserCreation do
   context "with valid user info and valid card" do
-    let(:customer) { double("customer", successful?: true) }
+    let(:customer) { double("customer", successful?: true, token: 'abcdefg') }
 
     before do
       allow(StripeWrapper::Customer).to receive('create').and_return(customer)
@@ -15,6 +15,11 @@ describe UserCreation do
     it "creates a new user" do
       UserCreation.new(User.new(Fabricate.attributes_for(:user)), nil).create('123123')
       expect(User.count).to eq 1
+    end
+
+    it "sets the customer id" do
+      UserCreation.new(User.new(Fabricate.attributes_for(:user)), nil).create('123123')
+      expect(User.first.customer_id).to eq('abcdefg')
     end
 
     it "makes the inviter and the recipient follow each other" do
@@ -66,7 +71,7 @@ describe UserCreation do
       end
 
       it "sends email" do
-        customer = double("customer", successful?: true)
+        customer = double("customer", successful?: true, token: 'abcdefg')
         allow(StripeWrapper::Customer).to receive('create').and_return(customer)
 
         user_attributes = Fabricate.attributes_for(:user)

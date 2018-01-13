@@ -44,6 +44,10 @@ module StripeWrapper
       new(e, :error)
     end
 
+    def token
+      response.id
+    end
+
     def error_message
       response.message
     end

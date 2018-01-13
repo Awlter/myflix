@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "create payment on successful charge" do
+describe "create payment on successful charge", :vcr do
 	let(:event_data) do
 		{
 		  "id" => "evt_1Bj0i2FbDoFsZOtGxyOP9h6r",
@@ -97,8 +97,21 @@ describe "create payment on successful charge" do
 		}
 	end
 
-	it "creates a payment with webhook from stripe for charge succeeded" do
+	before do
+		Fabricate(:user, customer_id: "cus_C7FCBSobKgDJmV")
 		post '/stripe_events', event_data
+	end
+
+	it "creates a payment with webhook from stripe for charge succeeded" do
 		expect(Payment.count).to eq(1)
+	end
+
+	it "associate the payment to user" do
+		expect(Payment.first.user.customer_id).to eq("cus_C7FCBSobKgDJmV")
+	end
+
+	it "creates payments with correct key value pairs" do
+		expect(Payment.first.amount).to eq(999)
+		expect(Payment.first.reference_id).to eq("ch_1Bj0i1FbDoFsZOtGVU7QuhH6")
 	end
 end

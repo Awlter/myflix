@@ -51,6 +51,10 @@ describe StripeWrapper do
         it "creates a new costumer successfully" do
           expect(customer).to be_successful
         end
+
+        it "returns customer id" do
+          expect(customer.token).to be_present
+        end
       end
 
       context "with invalid card", :vcr do

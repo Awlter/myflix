@@ -1,6 +1,6 @@
 Myflix::Application.routes.draw do
   root to: 'pages#front'
-  mount StripeEvent::Engine, at: '/stripe_events'
+  mount StripeEvent::Engine => '/stripe_events'
   
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'

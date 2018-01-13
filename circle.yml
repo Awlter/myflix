@@ -1,6 +1,8 @@
 machine:
   ruby:
     version: 2.1.2
+  services:
+    - elasticsearch
   environment:
     STRIPE_PUBLISHABLE_KEY: pk_test_DcUmDlGJDzj8ggwqZ4Z94aio
     STRIPE_SECRET_KEY: sk_test_R7CsF65YXLyWRgQfDF7X0QBq

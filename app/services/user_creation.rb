@@ -11,6 +11,7 @@ class UserCreation
       customer = StripeWrapper::Customer.create(email: user.email, card: stripe_token)
 
       if customer.successful?
+        user.customer_id = customer.token
         user.save
         handle_invitation
         MyMailer.delay.register_success_mail(user)
