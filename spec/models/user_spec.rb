@@ -36,4 +36,12 @@ describe User do
       expect(user1.leaders.first).to eq user2
     end
   end
+
+  describe "#deactive!" do
+    it "update the active column to false" do
+      user = Fabricate(:user, active: true)
+      user.deactivate!
+      expect(user.active).to be_false
+    end
+  end
 end

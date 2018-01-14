@@ -1,0 +1,150 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.stripe.com/v1/events/evt_1BjmwTFbDoFsZOtGlEv3OhTK
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/3.8.0
+      Authorization:
+      - Bearer sk_test_R7CsF65YXLyWRgQfDF7X0QBq
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"3.8.0","lang":"ruby","lang_version":"2.1.2 p95 (2014-05-08)","platform":"x86_64-darwin17.0","engine":"ruby","publisher":"stripe","uname":"Darwin
+        wangxuefeis-MacBook-Pro.local 17.3.0 Darwin Kernel Version 17.3.0: Thu Nov  9
+        18:09:22 PST 2017; root:xnu-4570.31.3~1/RELEASE_X86_64 x86_64","hostname":"wangxuefeis-MacBook-Pro.local"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 13 Jan 2018 11:29:33 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2428'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - X-Stripe-Privileged-Session-Required,stripe-manage-version,X-Stripe-External-Auth-Required
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_Wsik7t0QQzJYpE
+      Stripe-Version:
+      - '2017-08-15'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "evt_1BjmwTFbDoFsZOtGlEv3OhTK",
+          "object": "event",
+          "api_version": "2017-08-15",
+          "created": 1515841973,
+          "data": {
+            "object": {
+              "id": "ch_1BjmwTFbDoFsZOtGBkONdiNJ",
+              "object": "charge",
+              "amount": 999,
+              "amount_refunded": 0,
+              "application": null,
+              "application_fee": null,
+              "balance_transaction": null,
+              "captured": false,
+              "created": 1515841973,
+              "currency": "usd",
+              "customer": "cus_C7uorJYm6Jm7VI",
+              "description": "",
+              "destination": null,
+              "dispute": null,
+              "failure_code": "card_declined",
+              "failure_message": "Your card was declined.",
+              "fraud_details": {},
+              "invoice": null,
+              "livemode": false,
+              "metadata": {},
+              "on_behalf_of": null,
+              "order": null,
+              "outcome": {
+                "network_status": "declined_by_network",
+                "reason": "generic_decline",
+                "risk_level": "normal",
+                "seller_message": "The bank did not return any further details with this decline.",
+                "type": "issuer_declined"
+              },
+              "paid": false,
+              "receipt_email": null,
+              "receipt_number": null,
+              "refunded": false,
+              "refunds": {
+                "object": "list",
+                "data": [],
+                "has_more": false,
+                "total_count": 0,
+                "url": "/v1/charges/ch_1BjmwTFbDoFsZOtGBkONdiNJ/refunds"
+              },
+              "review": null,
+              "shipping": null,
+              "source": {
+                "id": "card_1BjmWJFbDoFsZOtGsw40sXp7",
+                "object": "card",
+                "address_city": null,
+                "address_country": null,
+                "address_line1": null,
+                "address_line1_check": null,
+                "address_line2": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_zip_check": null,
+                "brand": "Visa",
+                "country": "US",
+                "customer": "cus_C7uorJYm6Jm7VI",
+                "cvc_check": null,
+                "dynamic_last4": null,
+                "exp_month": 11,
+                "exp_year": 2055,
+                "fingerprint": "b50oaaDDqq8f3Ffw",
+                "funding": "credit",
+                "last4": "0341",
+                "metadata": {},
+                "name": null,
+                "tokenization_method": null
+              },
+              "source_transfer": null,
+              "statement_descriptor": null,
+              "status": "failed",
+              "transfer_group": null
+            }
+          },
+          "livemode": false,
+          "pending_webhooks": 0,
+          "request": {
+            "id": "req_wEb1dHsaPoC6Xf",
+            "idempotency_key": null
+          },
+          "type": "charge.failed"
+        }
+    http_version: 
+  recorded_at: Sat, 13 Jan 2018 11:29:33 GMT
+recorded_with: VCR 3.0.3
