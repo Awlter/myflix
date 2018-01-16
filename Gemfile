@@ -20,8 +20,8 @@ gem 'carrierwave-aws'
 gem 'stripe'
 gem 'draper', '~> 1.3'
 gem 'stripe_event', '~> 1.1'
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+gem 'elasticsearch-model', '~> 0.1.9'
+gem 'elasticsearch-rails', '~> 0.1.9'
 
 group :development do
   gem 'thin'
