@@ -9,7 +9,7 @@ Myflix::Application.routes.draw do
 
   get '/register', to: 'users#new'
   get '/register/:token', to: 'users#new_with_token', as: 'register_with_token'
-  resources :users, only: [:create, :show]
+  resources :users, only: [:create, :show, :edit, :update]
   resources :categories, only: [:show]
 
   get '/my_queue', to: 'queue_items#index'
