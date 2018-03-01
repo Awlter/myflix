@@ -12,6 +12,7 @@ Staging website for testing
 - use MailGun to implement emailing process
 - use Carrierwave \& AWS to upload images and videos
 - deployed on Heroku with Unicorn
+- structure the code based on the knowledge of "Fat Model \& Thin Controller", Concerns and API wrapping(e.g. StripeWrapper)
 
 == Features
 1. A visiter can register the website with a test credit card number(4242424242424242)
