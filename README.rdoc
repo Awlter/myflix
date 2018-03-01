@@ -2,7 +2,7 @@ Staging website for testing
 - http://walterflix-staging.herokuapp.com/
 
 == Issues with the App
-- Please visit the staing branch to examine the complete code. Because there are some issure working with CirCleCI, the staging branch cann't be merged to the master branch.
+- Please visit the staing branch to examine the complete code. Because there are some issues working with CirCleCI, the staging branch cann't be merged to the master branch.
 - The page of "Plan and Billing" is not ready
 - ElasticSearch is not ready
 
