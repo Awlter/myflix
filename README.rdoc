@@ -6,6 +6,13 @@ Staging website for testing
 - The page of "Plan and Billing" is not ready
 - ElasticSearch is not ready
 
+== About the app
+- use Githubflow \& CirCleCI to simulate cooperation, ensuring CI/CD
+- use Redis \& Sidekiq to deal with background processing
+- use MailGun to implement emailing process
+- use Carrierwave \& AWS to upload images and videos
+- deployed on Heroku with Unicorn
+
 == Features
 1. A visiter can register the website with a test credit card number(4242424242424242)
 2. The visiter would receive an email after registering(might in trash bin)
