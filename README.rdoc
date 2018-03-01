@@ -1,10 +1,21 @@
-Because there are some issure working with CirCleCI, the staging branch cann't be merged to the master branch. Please visit the staing branch to examine the complete code.
+Staging website for testing
+- http://walterflix-staging.herokuapp.com/
 
-
+== Issues with the App
+- Please visit the staing branch to examine the complete code. Because there are some issure working with CirCleCI, the staging branch cann't be merged to the master branch.
+- The page of "Plan and Billing" is not ready
+- ElasticSearch is not ready
 
 == Features
 1. A visiter can register the website with a test credit card number(4242424242424242)
 2. The visiter would receive an email after registering(might in trash bin)
-3. An user can reset her password
-4. An user can invite a friend
+3. A user can reset her password on the forget password page
+4. A user can invite a friend
 5. After the friend registrition with the invitation link, the inviter and her friend will automatically follow each other
+6. A user can edit her info on account page
+7. A user can follow/unfollow another user
+8. A user can rate, review, watch video
+9. A user can add a video to her queue
+10. A user can reorder her queue
+11. An admin can add a video
+12. An admin can visit the paymenys page
